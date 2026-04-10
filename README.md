@@ -1,7 +1,10 @@
-# NACA 4412 Aerofoil CFD Analysis (ANSYS Fluent)
+#  NACA 4412 Aerofoil CFD Analysis (ANSYS Fluent)
+
  A 2D Computational Fluid Dynamics (CFD) analysis of a NACA 4412 aerofoil to evaluate aerodynamic performance using ANSYS Fluent.
 
-## Overview
+
+
+##  Overview
 
 This project performs a steady-state 2D CFD analysis of a NACA 4412 aerofoil at multiple angles of attack (AoA).
 
@@ -13,22 +16,26 @@ The objective was to evaluate:
 
 This type of analysis is widely used in aircraft design, UAV development, and wind turbine optimization.
 
-## Tools & Software
+
+
+##  Tools & Software
 
 * ANSYS Workbench 2026 R1 (Student Edition)
 * ANSYS Fluent
 * SpaceClaim (Python scripting for geometry)
 
-### Methodology
 
-## Flow Setup
+
+##  Methodology
+
+### Flow Setup
 
 * Analysis Type: 2D steady-state external flow
 * Fluid: Air (ρ = 1.225 kg/m³, μ = 1.7894×10⁻⁵ Pa·s)
 * Freestream Velocity: 15 m/s
 * Reynolds Number: ~1,000,000
 
-## Turbulence Model
+### Turbulence Model
 
 * k-ω SST model
 
@@ -59,7 +66,9 @@ This type of analysis is widely used in aircraft design, UAV development, and wi
 * Top/Bottom: Symmetry
 * Aerofoil: No-slip wall
 
-## Results — Aerodynamic Performance
+
+
+##  Results — Aerodynamic Performance
 
 | AoA (°) | Cl     | Cd     | L/D   |
 | ------- | ------ | ------ | ----- |
@@ -70,7 +79,8 @@ This type of analysis is widely used in aircraft design, UAV development, and wi
 | +12     | 1.3775 | 0.0557 | 24.73 |
 
 
-## Key Observations
+
+##  Key Observations
 
 * Cl increases consistently with AoA — physically correct for a cambered aerofoil
 * Cd increases gradually due to increased pressure drag
@@ -79,32 +89,40 @@ This type of analysis is widely used in aircraft design, UAV development, and wi
 * No stall observed within tested range
 
 
-### Flow Visualisation
 
-## Velocity Contour
+##  Results Visualization
 
-* High velocity observed on upper surface
-* Indicates low pressure region → lift generation
+###  Convergence (Residuals)
 
-## Pressure Contour
+![Residuals](residuals.png)
 
-* Low pressure on upper surface
-* High pressure on lower surface
-* Maximum pressure difference near leading edge
+###  Lift Coefficient (Cl vs AoA)
 
-## Velocity Vectors
+![Cl](cl_plot.png)
 
-* Flow acceleration over upper surface
-* Downwash visible behind trailing edge
+###  Drag Coefficient (Cd vs AoA)
 
-## Convergence
+![Cd](cd_plot.png)
+
+###  Velocity Contour (AoA = 12°)
+
+![Velocity](velocity.png)
+
+###  Pressure Contour (AoA = 12°)
+
+![Pressure](pressure.png)
+
+
+
+##  Convergence
 
 * Residuals reduced by 3–4 orders of magnitude
 * Lift and drag coefficients converged to stable values
-* All simulations completed in ~200 iterations
+* Simulations converged within ~200 iterations
 
 
-## Key Learnings
+
+##  Key Learnings
 
 * Cambered aerofoils generate lift even at negative AoA
 * Proper AoA implementation is critical for correct results
@@ -112,7 +130,8 @@ This type of analysis is widely used in aircraft design, UAV development, and wi
 * Mesh and domain size significantly affect CFD results
 
 
-## Challenges Faced
+
+##  Challenges Faced
 
 * Incorrect Cl trend due to sign error in velocity components
 * SpaceClaim scripting issues with .NET data types
@@ -120,7 +139,8 @@ This type of analysis is widely used in aircraft design, UAV development, and wi
 * Geometry setup issues (2D vs 3D interpretation)
 
 
-## Angle of Attack Implementation
+
+## 📐 Angle of Attack Implementation
 
 Instead of rotating geometry, AoA was simulated by decomposing inlet velocity:
 
@@ -130,7 +150,8 @@ Instead of rotating geometry, AoA was simulated by decomposing inlet velocity:
 This approach avoids remeshing and ensures consistent mesh quality.
 
 
-## Applications
+
+##  Applications
 
 * Aircraft wing design
 * UAV aerodynamic analysis
@@ -138,13 +159,15 @@ This approach avoids remeshing and ensures consistent mesh quality.
 * Motorsport aerodynamics
 
 
+
 ## Project Files
 
-* Detailed CFD report (PDF)
+* CFD analysis report (PDF)
 * Simulation result images
-  
 
-## 🚀 Future Work
+
+
+##  Future Work
 
 * Extend analysis to higher AoA to capture stall
 * Perform transient simulations
